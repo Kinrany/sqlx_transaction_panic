@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: Db
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "mysql://root:example@db/Db"
